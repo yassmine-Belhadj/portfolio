@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -324,14 +324,94 @@
                 </div>
             </div>
 
-            <!-- Visual / Dashboard Card -->
-            <div class="relative w-full max-w-md mx-auto lg:ml-auto mt-10 lg:mt-0">
-                <!-- Main photo frame -->
-                <div class="neo-card p-4 relative z-10 transform rotate-2 hover:rotate-0 transition-transform duration-300 bg-white">
-                    <div class="aspect-[3/4] rounded-lg bg-gray-200 overflow-hidden relative border-2 border-brand-textLight dark:border-brand-accentDark">
-                        <img src="profile.png" alt="Yassmine Belhadj" class="w-full h-full object-cover object-top relative z-10">
-                    </div>
+            <!-- Visual / Avatar Interactif avec Yeux -->
+            <div class="relative w-full max-w-md mx-auto lg:ml-auto mt-10 lg:mt-0" id="avatar-container">
+                <style>
+                  .avatar-stage { position:relative; width:min(85%, 300px); aspect-ratio:3/4; margin:0 auto; }
+                  .kpi-tile { position:absolute; background:#fff; border:1px solid #e4e9f3; border-radius:14px;
+                    padding:8px 10px; box-shadow:0 6px 20px rgba(31,58,110,.13); color:#1a2540;
+                    font-size:10px; line-height:1.3; will-change:transform; font-family:system-ui,sans-serif; z-index:20; }
+                  .kpi-tile b { display:block; font-size:13px; color:#1f3a6e; margin-top:2px; }
+                  .kpi-tile span { color:#7a89a8; }
+                  .kpi-t1 { left:-14%; top:30%; width:32%; }
+                  .kpi-t2 { right:-16%; top:14%; width:34%; }
+                  .kpi-t3 { right:-10%; top:58%; width:27%; }
+                  @media (max-width:640px) { .kpi-tile { display:none; } }
+                  .avatar-eye-wrap { position:absolute; inset:0; pointer-events:none; }
+                </style>
+
+                <!-- KPI Cards flottantes -->
+                <div class="kpi-tile kpi-t1" data-depth="-1.4">
+                  <span>Projets Data</span><b>21 ✅</b>
+                  <svg viewBox="0 0 100 30" style="display:block;width:100%;height:auto;margin-top:5px"><polyline fill="none" stroke="#1f3a6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,24 14,20 28,22 42,13 56,16 70,8 84,10 100,3"/></svg>
                 </div>
+                <div class="kpi-tile kpi-t2" data-depth="-2">
+                  <span>Dashboards Power BI</span><b>+8 📊</b>
+                  <svg viewBox="0 0 100 34" style="display:block;width:100%;height:auto;margin-top:5px"><g fill="#c9d4ea"><rect x="2" y="20" width="12" height="14" rx="2"/><rect x="20" y="14" width="12" height="20" rx="2"/><rect x="38" y="17" width="12" height="17" rx="2"/><rect x="56" y="8" width="12" height="26" rx="2"/></g><rect x="74" y="1" width="12" height="33" rx="2" fill="#1f3a6e"/></svg>
+                </div>
+                <div class="kpi-tile kpi-t3" data-depth="-1">
+                  <span>Lignes nettoyées</span><b>12 480 🧹</b>
+                </div>
+
+                <!-- Photo + Yeux SVG superposés -->
+                <div class="avatar-stage neo-card overflow-hidden" id="avatar-stage" style="box-shadow:0 8px 32px rgba(31,58,110,0.18);">
+                  <img src="profile.png" alt="Yassmine Belhadj" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+                  <!-- Yeux SVG (overlay) -->
+                  <svg class="avatar-eye-wrap" id="eye-svg" viewBox="0 0 100 133" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <radialGradient id="irisG2" cx="50%" cy="50%" r="50%">
+                        <stop offset="0" stop-color="#1a0a06"/><stop offset=".45" stop-color="#3b1f10"/>
+                        <stop offset=".75" stop-color="#5c3820"/><stop offset="1" stop-color="#2a1208"/>
+                      </radialGradient>
+                      <clipPath id="eyeClipL2"><ellipse cx="34" cy="29" rx="7.5" ry="4.5"/></clipPath>
+                      <clipPath id="eyeClipR2"><ellipse cx="66" cy="29" rx="7.5" ry="4.5"/></clipPath>
+                    </defs>
+                    <!-- Oeil gauche -->
+                    <g clip-path="url(#eyeClipL2)">
+                      <ellipse cx="34" cy="29" rx="7.5" ry="4.5" fill="#f3dfc1"/>
+                      <g id="pupilL2"><circle r="4" fill="url(#irisG2)"/><circle r="1.2" cx="-1" cy="-1" fill="rgba(255,255,255,0.5)"/></g>
+                    </g>
+                    <!-- Oeil droit -->
+                    <g clip-path="url(#eyeClipR2)">
+                      <ellipse cx="66" cy="29" rx="7.5" ry="4.5" fill="#f3dfc1"/>
+                      <g id="pupilR2"><circle r="4" fill="url(#irisG2)"/><circle r="1.2" cx="-1" cy="-1" fill="rgba(255,255,255,0.5)"/></g>
+                    </g>
+                  </svg>
+                </div>
+
+                <script>
+                (function(){
+                  var stage = document.getElementById('avatar-stage');
+                  var pL = document.getElementById('pupilL2');
+                  var pR = document.getElementById('pupilR2');
+                  if(!stage||!pL||!pR) return;
+                  var eyeL = {cx:34,cy:29,r:3};
+                  var eyeR = {cx:66,cy:29,r:3};
+                  function move(eye,el,mx,my){
+                    var r = stage.getBoundingClientRect();
+                    var vw=100, vh=133;
+                    var sx=(mx-r.left)*(vw/r.width);
+                    var sy=(my-r.top)*(vh/r.height);
+                    var dx=sx-eye.cx, dy=sy-eye.cy;
+                    var a=Math.atan2(dy,dx);
+                    var d=Math.min(Math.sqrt(dx*dx+dy*dy),eye.r);
+                    el.setAttribute('transform','translate('+(eye.cx+Math.cos(a)*d)+','+(eye.cy+Math.sin(a)*d)+')');
+                  }
+                  document.addEventListener('mousemove',function(e){
+                    move(eyeL,pL,e.clientX,e.clientY);
+                    move(eyeR,pR,e.clientX,e.clientY);
+                  });
+                  // Parallax KPI
+                  var tiles=document.querySelectorAll('.kpi-tile[data-depth]');
+                  document.addEventListener('mousemove',function(e){
+                    var cx=window.innerWidth/2,cy=window.innerHeight/2;
+                    tiles.forEach(function(t){
+                      var d=parseFloat(t.dataset.depth)||0;
+                      t.style.transform='translate('+(e.clientX-cx)/cx*d*7+'px,'+(e.clientY-cy)/cy*d*7+'px)';
+                    });
+                  });
+                })();
+                </script>
                 
                 <!-- Floating Elements (Stickers / UI mockups) -->
                 <div class="absolute -top-6 -left-6 neo-card p-3 bg-white dark:bg-[#3d2440] flex items-center gap-2 transform -rotate-6 z-20 shadow-neo">
