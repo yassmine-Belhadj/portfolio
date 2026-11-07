@@ -1417,30 +1417,86 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE 3D AVATAR SECTION -->
-    <section id="interactive-avatar" class="py-16 bg-white dark:bg-brand-dark/40 border-t-2 border-brand-textLight dark:border-brand-accentDark transition-colors duration-300 relative overflow-hidden flex flex-col justify-center items-center">
-
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 bg-brand-soft/30 dark:bg-brand-dark border-t-2 border-brand-textLight dark:border-brand-accentDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- STYLES AVATAR 3D DANS LA SECTION PROJETS -->
         <style>
-            #interactive-avatar { --navy:#1f3a6e; --ink:#1a2540; --line:#e4e9f3; --soft:#7a89a8; }
-            #interactive-avatar .stage { position:relative; width:min(88vw, 62vh, 400px); aspect-ratio:896/1195; margin:0 auto; }
-            #interactive-avatar .avatar { position:absolute; inset:0; width:100%; height:100%; transform-origin:50% 100%;
+            #projects { --navy:#1f3a6e; --ink:#1a2540; --line:#e4e9f3; --soft:#7a89a8; }
+            #projects .stage { position:relative; width:min(88vw, 55vh, 340px); aspect-ratio:896/1195; margin:0 auto; }
+            #projects .avatar { position:absolute; inset:0; width:100%; height:100%; transform-origin:50% 100%;
                 -webkit-mask-image:linear-gradient(#000 80%, transparent 100%); mask-image:linear-gradient(#000 80%, transparent 100%); }
-            #interactive-avatar .tile { position:absolute; background:#fff; border:1px solid var(--line); border-radius:14px; padding:10px 12px;
+            #projects .tile { position:absolute; background:#fff; border:1px solid var(--line); border-radius:14px; padding:9px 11px;
                 box-shadow:0 6px 20px rgba(31,58,110,.07); color:var(--ink); font-size:11px; line-height:1.25; will-change:transform; z-index:10; }
-            #interactive-avatar .tile b { display:block; font-size:15px; color:var(--navy); margin-top:2px; }
-            #interactive-avatar .tile span { color:var(--soft); }
-            #interactive-avatar .t1 { left:-40%; top:42%; width:36%; }
-            #interactive-avatar .t2 { right:-42%; top:18%; width:38%; }
-            #interactive-avatar .t3 { right:-34%; top:60%; width:30%; }
-            #interactive-avatar .tile svg { display:block; width:100%; height:auto; margin-top:6px; }
-            .dark #interactive-avatar .tile { background:#1E1220; border-color:rgba(240, 138, 180, 0.35); color:#FDF8FA; box-shadow:0 6px 20px rgba(0,0,0,0.3); }
-            .dark #interactive-avatar .tile b { color:#F08AB4; }
-            .dark #interactive-avatar .tile span { color:#A79BA8; }
-            @media (max-width:560px) { #interactive-avatar .tile { display:none; } }
+            #projects .tile b { display:block; font-size:14px; color:var(--navy); margin-top:2px; }
+            #projects .tile span { color:var(--soft); }
+            #projects .t1 { left:-32%; top:40%; width:38%; }
+            #projects .t2 { right:-32%; top:16%; width:40%; }
+            #projects .t3 { right:-26%; top:62%; width:32%; }
+            #projects .tile svg { display:block; width:100%; height:auto; margin-top:5px; }
+            .dark #projects .tile { background:#1E1220; border-color:rgba(240, 138, 180, 0.35); color:#FDF8FA; box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+            .dark #projects .tile b { color:#F08AB4; }
+            .dark #projects .tile span { color:#A79BA8; }
+            @media (max-width:640px) { #projects .tile { display:none; } }
         </style>
 
-        <div class="w-full flex justify-center items-center px-4">
-            <div class="stage" id="stage">
+        <!-- BANNIÈRE HERO PROJETS AVEC AVATAR 3D INTERACTIF -->
+        <div class="relative bg-white dark:bg-brand-dark/90 rounded-3xl p-6 sm:p-8 lg:p-10 border-2 border-brand-textLight dark:border-brand-accentDark shadow-neo dark:shadow-neo-dark mb-10 overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-brand-soft/40 dark:bg-brand-raspberry/10 blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <!-- Colonne Gauche : Titre, Discours Avatar, Mini-statistiques -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-soft/70 dark:bg-brand-raspberry/20 text-brand-textLight dark:text-brand-accentDark border border-brand-raspberry/30 mb-3 w-fit">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Exploration Interactive de Données</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-bold tracking-tight">
+                        <span data-i18n-html="proj_title">Mes <span class="font-serif italic text-brand-raspberry dark:text-brand-accentDark">Projets</span></span>
+                    </h2>
+                    
+                    <p class="text-sm sm:text-base opacity-75 mt-2" id="project-count-text">
+                        <span data-i18n="proj_subtitle">21 projets interactifs avec présentations Canva intégrées</span>
+                    </p>
+
+                    <!-- Bulle de dialogue créative de l'Avatar -->
+                    <div class="relative mt-5 p-4 sm:p-5 rounded-2xl bg-brand-light dark:bg-[#251528] border-2 border-brand-textLight dark:border-brand-accentDark">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl sm:text-3xl flex-shrink-0 animate-bounce">👀</span>
+                            <div>
+                                <p class="text-sm sm:text-base font-medium text-brand-textLight dark:text-brand-textDark leading-relaxed">
+                                    « Bienvenue dans mon espace projets ! Déplacez votre curseur : mes yeux suivent chacun de vos mouvements pendant que vous explorez mes dashboards <strong>Power BI</strong>, mes pipelines <strong>ETL</strong> et mes modèles <strong>Machine Learning</strong>. »
+                                </p>
+                                <div class="flex flex-wrap items-center gap-2 mt-2">
+                                    <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-raspberry dark:text-brand-accentDark">
+                                        <i class="ph-bold ph-cursor-click"></i> Cliquez sur un projet pour voir la présentation Canva intégrée !
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mini Cartes Statistiques / Highlights -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-5">
+                        <div class="p-2.5 rounded-xl bg-brand-soft/25 dark:bg-brand-dark border border-brand-textLight/15 dark:border-brand-accentDark/25 text-center">
+                            <span class="block text-lg sm:text-xl font-bold text-brand-raspberry dark:text-brand-accentDark">21</span>
+                            <span class="text-[11px] sm:text-xs opacity-70">Projets Totaux</span>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-brand-soft/25 dark:bg-brand-dark border border-brand-textLight/15 dark:border-brand-accentDark/25 text-center">
+                            <span class="block text-lg sm:text-xl font-bold text-brand-raspberry dark:text-brand-accentDark">100%</span>
+                            <span class="text-[11px] sm:text-xs opacity-70">Cas Concrets</span>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-brand-soft/25 dark:bg-brand-dark border border-brand-textLight/15 dark:border-brand-accentDark/25 text-center">
+                            <span class="block text-lg sm:text-xl font-bold text-brand-raspberry dark:text-brand-accentDark">ETL & BI</span>
+                            <span class="text-[11px] sm:text-xs opacity-70">Spécialisation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne Droite : Avatar 3D interactif -->
+                <div class="lg:col-span-5 flex justify-center items-center py-2 relative overflow-visible">
+                    <div class="stage" id="stage">
   <div class="tile t1" data-depth="-1.4"><span>Taux de conversion</span><b>4,8 %</b>
     <svg viewBox="0 0 100 30"><polyline fill="none" stroke="#1f3a6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,24 14,20 28,22 42,13 56,16 70,8 84,10 100,3"/></svg></div>
   <div class="tile t2" data-depth="-2"><span>Ventes par mois</span><b>+18 %</b>
@@ -1459,8 +1515,32 @@
     <g clip-path="url(#clipR)"><g id="irisR"><image href="data:image/png;base64,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" x="507" y="353" width="62" height="62"/></g><rect width="896" height="1195" fill="url(#lidR)"/></g>
   </svg>
 </div>
+                </div>
+            </div>
+        </div>
 
-<script>
+        <!-- BARRE DE RECHERCHE ET FILTRES DE PROJETS -->
+        <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 mb-8">
+            <!-- Barre de recherche instantanée -->
+            <div class="relative flex-grow max-w-md">
+                <i class="ph-bold ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" id="project-search" placeholder="Rechercher (ex: Python, SQL, Power BI...)" 
+                       class="w-full pl-9 pr-8 py-2.5 text-xs md:text-sm border-2 border-brand-textLight dark:border-brand-accentDark rounded-full bg-white dark:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-raspberry shadow-sm">
+                <button id="clear-search" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-raspberry hidden" title="Effacer">
+                    <i class="ph-bold ph-x"></i>
+                </button>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex gap-1.5 flex-wrap" id="project-filters">
+                <button class="filter-btn neo-btn px-4 py-2 rounded-full text-xs font-bold bg-brand-textLight text-white dark:bg-brand-accentDark dark:text-brand-textLight" data-filter="all">Tous (21)</button>
+                <button class="filter-btn neo-btn px-4 py-2 rounded-full text-xs font-bold bg-white dark:bg-brand-textLight text-brand-textLight dark:text-brand-accentDark" data-filter="bi">BI &amp; ETL</button>
+                <button class="filter-btn neo-btn px-4 py-2 rounded-full text-xs font-bold bg-white dark:bg-brand-textLight text-brand-textLight dark:text-brand-accentDark" data-filter="ml">ML &amp; IA</button>
+                <button class="filter-btn neo-btn px-4 py-2 rounded-full text-xs font-bold bg-white dark:bg-brand-textLight text-brand-textLight dark:text-brand-accentDark" data-filter="dev">Dev</button>
+            </div>
+        </div>
+
+        <script>
 (() => {
   const avatar = document.getElementById('avatar');
   const irisL = document.getElementById('irisL'), irisR = document.getElementById('irisR');
@@ -1498,42 +1578,8 @@
   requestAnimationFrame(frame);
 })();
 </script>
-        </div>
-    </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="py-20 bg-brand-soft/30 dark:bg-brand-dark border-t-2 border-brand-textLight dark:border-brand-accentDark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 gap-4">
-                <div>
-                    <h2 class="text-4xl font-bold">
-                        <span data-i18n-html="proj_title">Mes <span class="font-serif italic text-brand-raspberry dark:text-brand-accentDark">Projets</span></span>
-                    </h2>
-                    <p class="text-sm opacity-70 mt-1" id="project-count-text"><span data-i18n="proj_subtitle">21 projets interactifs avec présentations Canva intégrées</span></p>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto items-stretch sm:items-center">
-                    <!-- Barre de recherche instantanée -->
-                    <div class="relative flex-grow sm:w-72">
-                        <i class="ph-bold ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                        <input type="text" id="project-search" placeholder="Rechercher (ex: Python, SQL, Power BI...)" 
-                               class="w-full pl-9 pr-8 py-2 text-xs md:text-sm border-2 border-brand-textLight dark:border-brand-accentDark rounded-full bg-white dark:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-raspberry">
-                        <button id="clear-search" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-raspberry hidden" title="Effacer">
-                            <i class="ph-bold ph-x"></i>
-                        </button>
-                    </div>
-
-                    <!-- Filters -->
-                    <div class="flex gap-1.5 flex-wrap" id="project-filters">
-                        <button class="filter-btn neo-btn px-3 py-1.5 rounded-full text-xs font-bold bg-brand-textLight text-white dark:bg-brand-accentDark dark:text-brand-textLight" data-filter="all">Tous (21)</button>
-                        <button class="filter-btn neo-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white dark:bg-brand-textLight text-brand-textLight dark:text-brand-accentDark" data-filter="bi">BI &amp; ETL</button>
-                        <button class="filter-btn neo-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white dark:bg-brand-textLight text-brand-textLight dark:text-brand-accentDark" data-filter="ml">ML &amp; IA</button>
-                        <button class="filter-btn neo-btn px-3 py-1.5 rounded-full text-xs font-bold bg-white dark:bg-brand-textLight text-brand-textLight dark:text-brand-accentDark" data-filter="dev">Dev</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Message aucun résultat -->
+<!-- Message aucun résultat -->
             <div id="no-projects-msg" class="hidden text-center py-12 neo-card bg-white dark:bg-brand-dark max-w-md mx-auto mb-8">
                 <span class="text-4xl block mb-2">🔍</span>
                 <h3 class="font-bold text-lg">Aucun projet trouvé</h3>
